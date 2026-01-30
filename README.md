@@ -1,3 +1,62 @@
+# V2.0
+
+## Descripción
+
+Ultima version. Cambia la mayoria de clases, elimina la Library y crea el funcionamiento mainn
+
+---
+
+## Estructura
+
+Paquete: `proyectofullstack`
+
+Clases:
+
+* `Book`
+* `loans`
+* `user`
+* `Main`
+
+---
+
+
+## Clase `Main`
+
+Contiene el método `main` que ejecuta el programa, muestra el menú de la biblioteca 
+
+### Case 1: Ver información de los libros
+
+Muestra en pantalla la información de todos los libros del sistema. 
+
+### Case 2: Pedir prestado un libro
+
+Permite al usuario seleccionar un libro para pedirlo prestado.  
+El sistema valida que:
+- El usuario no tenga más de dos préstamos activos.
+- El libro seleccionado esté disponible.
+
+Si las validaciones se cumplen, el libro se marca como no disponible y se registra el préstamo.
+
+### Case 3: Devolver un libro
+
+Muestra únicamente los libros que el usuario tiene actualmente prestados.  
+El usuario selecciona uno y el sistema:
+- Marca el libro como disponible.
+- Disminuye el número de préstamos activos del usuario.
+- Cierra el préstamo correspondiente.
+
+### Case 4: Ver información del usuario
+
+Muestra los datos del usuario actual:
+- Nombre del usuario.
+- Cantidad de préstamos activos.
+
+### Case 5: Salir
+
+Finaliza la ejecución del programa y cierra el sistema de forma ordenada.
+
+---
+
 # V1.1
 
 ## Descripción

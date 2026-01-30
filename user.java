@@ -11,14 +11,13 @@ public class user {
         name = sc.nextLine();
         activeLoans = 0;
     }
-
-    public void getUser() {
-        System.out.println("------------------------");
-        System.out.println("Nombre: " + name);
-        System.out.println("Prestamos activos: " + activeLoans);
-        System.out.println("------------------------");
+    public boolean canBorrow() {
+        return activeLoans < 2;
     }
 
+    public boolean hasLoans() {
+        return activeLoans > 0;
+    }
     public void addLoan() {
         activeLoans++;
     }
@@ -28,4 +27,10 @@ public class user {
             activeLoans--;
         }
     }
+    @Override
+    public String toString() {
+        return "Usuario: " + name +
+               "\nPréstamos activos: " + activeLoans;
+    }
 }
+
