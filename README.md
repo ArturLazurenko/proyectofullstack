@@ -1,3 +1,10 @@
+# V2.0.1
+
+## Descripción
+
+se añadio funciones que no se guardaron correctamente en la 2.0
+
+---
 # V2.0
 
 ## Descripción

@@ -13,18 +13,18 @@ public class mainn {
 
         // Books
         book book1 = new book();
-        book1.title = "Java Básico";
-        book1.author = "Autor 1";
+        book1.title = "Cien años de soledad";
+        book1.author = "Gabriel García Márquez";
         book1.available = true;
 
         book book2 = new book();
-        book2.title = "Programación I";
-        book2.author = "Autor 2";
+        book2.title = "1984";
+        book2.author = "George Orwell";
         book2.available = true;
 
         book book3 = new book();
-        book3.title = "Sistemas Operativos";
-        book3.author = "Autor 3";
+        book3.title = "Fahrenheit 451";
+        book3.author = "Ray Bradbury";
         book3.available = true;
 
         // Loans (máximo 2)
@@ -38,10 +38,11 @@ public class mainn {
             System.out.println("1. Ver información de los libros");
             System.out.println("2. Pedir prestado un libro");
             System.out.println("3. Devolver un libro");
-            System.out.println("4. Salir");
+            System.out.println("4. Informacion del usuario");
+            System.out.println("5. Salir");
             System.out.print("Elige una opción: ");
             option = scanner.nextInt();
-            scanner.nextLine(); // limpiar salto de línea
+            scanner.nextLine(); 
 
             switch (option) {
 
@@ -112,7 +113,17 @@ public class mainn {
                         System.out.println("No tienes libros para devolver.");
                         break;
                     }
+                    System.out.println("\nLibro 1");
+                    System.out.println(book1.title);
+                    System.out.println("----------------");
 
+                    System.out.println("Libro 2");
+                    System.out.println(book2.title);
+                    System.out.println("----------------");
+
+                    System.out.println("Libro 3");
+                    System.out.println(book3.title);
+                    System.out.println("----------------");
                     System.out.print("Elige el libro a devolver (1-3): ");
                     int returnOption = scanner.nextInt();
                     scanner.nextLine();
@@ -143,9 +154,14 @@ public class mainn {
 
                     System.out.println("Libro devuelto correctamente.");
                     break;
-
                 case 4:
-                    System.out.println("Saliendo del sistema...");
+                    System.out.println("\n------ Informacion del Usuario --------");
+                    System.out.println("Nombre: " + user.name);
+                    System.out.println("Préstamos activos: " + user.activeLoans);
+                    break;
+
+                case 5:
+                    System.out.println("Saliendo del sistema, adios...");
                     break;
 
                 default:
