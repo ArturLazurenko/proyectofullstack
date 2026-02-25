@@ -1,3 +1,13 @@
+# V3.0
+
+## Descripción
+V3.0
+
+Se reorganiza la estructura del proyecto, se reincorpora la clase Library para manejar los datos del sistema y se mejora la organización del funcionamiento general del programa.
+
+Se optimiza la gestión de libros, usuarios y préstamos mediante una mejor separación de responsabilidades entre clases.
+
+---
 # V2.0.1
 
 ## Descripción
