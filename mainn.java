@@ -7,105 +7,39 @@ public class mainn {
 
         Scanner scanner = new Scanner(System.in);
 
-        // User
+        library library = new library();
+
         user user = new user();
         user.registerUser(scanner);
-
-        // Books
-        book book1 = new book();
-        book1.title = "Cien años de soledad";
-        book1.author = "Gabriel García Márquez";
-        book1.available = true;
-
-        book book2 = new book();
-        book2.title = "1984";
-        book2.author = "George Orwell";
-        book2.available = true;
-
-        book book3 = new book();
-        book3.title = "Fahrenheit 451";
-        book3.author = "Ray Bradbury";
-        book3.available = true;
-
-        // Loans (máximo 2)
-        loans loan1 = null;
-        loans loan2 = null;
 
         int option;
 
         do {
-            System.out.println("\n=== MENÚ BIBLIOTECA ===");
-            System.out.println("1. Ver información de los libros");
+            System.out.println("\n=== MENU BIBLIOTECA ===");
+            System.out.println("1. Ver informacion de los libros");
             System.out.println("2. Pedir prestado un libro");
             System.out.println("3. Devolver un libro");
             System.out.println("4. Informacion del usuario");
             System.out.println("5. Salir");
-            System.out.print("Elige una opción: ");
-            option = scanner.nextInt();
-            scanner.nextLine(); 
+            System.out.print("Elige una opcion: ");
+
+            option = leerEntero(scanner);
 
             switch (option) {
 
                 case 1:
-                    System.out.println("\nLibro 1");
-                    System.out.println(book1);
-                    System.out.println("----------------");
-
-                    System.out.println("Libro 2");
-                    System.out.println(book2);
-                    System.out.println("----------------");
-
-                    System.out.println("Libro 3");
-                    System.out.println(book3);
-                    System.out.println("----------------");
+                    library.showAllBooks();
                     break;
 
                 case 2:
                     if (!user.canBorrow()) {
-                        System.out.println("No puedes pedir más de 2 libros.");
+                        System.out.println("No puedes pedir mas de 2 libros.");
                         break;
                     }
-                    System.out.println("\nLibro 1");
-                    System.out.println(book1.title);
-                    System.out.println("----------------");
-
-                    System.out.println("Libro 2");
-                    System.out.println(book2.title);
-                    System.out.println("----------------");
-
-                    System.out.println("Libro 3");
-                    System.out.println(book3.title);
-                    System.out.println("----------------");
-
-                    System.out.print("Elige el libro (1-3): ");
-                    int borrowOption = scanner.nextInt();
-                    scanner.nextLine();
-
-                    book borrowedBook = null;
-
-                    if (borrowOption == 1) borrowedBook = book1;
-                    else if (borrowOption == 2) borrowedBook = book2;
-                    else if (borrowOption == 3) borrowedBook = book3;
-                    else {
-                        System.out.println("Opción inválida.");
-                        break;
-                    }
-
-                    if (!borrowedBook.canBeBorrowed()) {
-                        System.out.println("El libro no está disponible.");
-                        break;
-                    }
-
-                    borrowedBook.borrow();
-                    user.addLoan();
-
-                    if (loan1 == null || !loan1.active) {
-                        loan1 = new loans(borrowedBook);
-                    } else {
-                        loan2 = new loans(borrowedBook);
-                    }
-
-                    System.out.println("Libro prestado correctamente.");
+                    library.showBookTitles();
+                    System.out.print("Elige el libro (1-" + library.getBooksCount() + "): ");
+                    int borrowOption = leerEntero(scanner);
+                    library.borrowBook(user, borrowOption);
                     break;
 
                 case 3:
@@ -113,51 +47,15 @@ public class mainn {
                         System.out.println("No tienes libros para devolver.");
                         break;
                     }
-                    System.out.println("\nLibro 1");
-                    System.out.println(book1.title);
-                    System.out.println("----------------");
-
-                    System.out.println("Libro 2");
-                    System.out.println(book2.title);
-                    System.out.println("----------------");
-
-                    System.out.println("Libro 3");
-                    System.out.println(book3.title);
-                    System.out.println("----------------");
-                    System.out.print("Elige el libro a devolver (1-3): ");
-                    int returnOption = scanner.nextInt();
-                    scanner.nextLine();
-
-                    book returnedBook = null;
-
-                    if (returnOption == 1) returnedBook = book1;
-                    else if (returnOption == 2) returnedBook = book2;
-                    else if (returnOption == 3) returnedBook = book3;
-                    else {
-                        System.out.println("Opción inválida.");
-                        break;
-                    }
-
-                    if (returnedBook.available) {
-                        System.out.println("Ese libro ya está disponible.");
-                        break;
-                    }
-
-                    returnedBook.returnBook();
-                    user.removeLoan();
-
-                    if (loan1 != null && loan1.book == returnedBook && loan1.active) {
-                        loan1.closeLoan();
-                    } else if (loan2 != null && loan2.book == returnedBook && loan2.active) {
-                        loan2.closeLoan();
-                    }
-
-                    System.out.println("Libro devuelto correctamente.");
+                    library.showBorrowedBooks();
+                    library.showBookTitles();
+                    System.out.print("Elige el libro a devolver (1-" + library.getBooksCount() + "): ");
+                    int returnOption = leerEntero(scanner);
+                    library.returnBook(user, returnOption);
                     break;
+
                 case 4:
-                    System.out.println("\n------ Informacion del Usuario --------");
-                    System.out.println("Nombre: " + user.name);
-                    System.out.println("Préstamos activos: " + user.activeLoans);
+                    user.showInfo();
                     break;
 
                 case 5:
@@ -165,11 +63,22 @@ public class mainn {
                     break;
 
                 default:
-                    System.out.println("Opción inválida.");
+                    System.out.println("Opcion invalida. Elige entre 1 y 5.");
             }
 
-        } while (option != 4);
+        } while (option != 5);
 
         scanner.close();
+    }
+
+    private static int leerEntero(Scanner sc) {
+        try {
+            int value = sc.nextInt();
+            sc.nextLine();
+            return value;
+        } catch (Exception e) {
+            sc.nextLine();
+            return -1;
+        }
     }
 }

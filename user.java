@@ -3,23 +3,33 @@ package proyectofullstack;
 import java.util.Scanner;
 
 public class user {
-    String name;
-    int activeLoans;
+    public static final int MAX_LOANS = 2;
+
+    private String name;
+    private int activeLoans;
+
+    public user() {
+        this.activeLoans = 0;
+    }
 
     public void registerUser(Scanner sc) {
         System.out.print("Ingresa el nombre del usuario: ");
-        name = sc.nextLine();
-        activeLoans = 0;
+        this.name = sc.nextLine().trim();
+        this.activeLoans = 0;
     }
+
     public boolean canBorrow() {
-        return activeLoans < 2;
+        return activeLoans < MAX_LOANS;
     }
 
     public boolean hasLoans() {
         return activeLoans > 0;
     }
+
     public void addLoan() {
-        activeLoans++;
+        if (activeLoans < MAX_LOANS) {
+            activeLoans++;
+        }
     }
 
     public void removeLoan() {
@@ -27,10 +37,24 @@ public class user {
             activeLoans--;
         }
     }
+
+    public void showInfo() {
+        System.out.println("------ Informacion del Usuario --------");
+        System.out.println("Nombre            : " + name);
+        System.out.println("Prestamos activos : " + activeLoans + " / " + MAX_LOANS);
+        System.out.println("---------------------------------------");
+    }
+
     @Override
     public String toString() {
-        return "Usuario: " + name +
-               "\nPréstamos activos: " + activeLoans;
+        return "Usuario: " + name + " | Prestamos activos: " + activeLoans + "/" + MAX_LOANS;
+    }
+
+    public String getName(){ 
+        return name; 
+    }
+
+    public int getActiveLoans() { 
+        return activeLoans; 
     }
 }
-
