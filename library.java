@@ -8,8 +8,8 @@ public class library {
     private int loanCounter;
 
     public library() {
-        books       = new ArrayList<>();
-        loans       = new ArrayList<>();
+        books = new ArrayList<>();
+        loans = new ArrayList<>();
         loanCounter = 1;
         loadDefaultBooks();
     }
@@ -50,10 +50,6 @@ public class library {
     }
 
     public boolean borrowBook(user user, int bookNumber) {
-        if (!user.canBorrow()) {
-            System.out.println("No puedes pedir mas de 2 libros.");
-            return false;
-        }
         if (bookNumber < 1 || bookNumber > books.size()) {
             System.out.println("Opcion invalida.");
             return false;
@@ -71,10 +67,6 @@ public class library {
     }
 
     public boolean returnBook(user user, int bookNumber) {
-        if (!user.hasLoans()) {
-            System.out.println("No tienes libros para devolver.");
-            return false;
-        }
         if (bookNumber < 1 || bookNumber > books.size()) {
             System.out.println("Opcion invalida.");
             return false;

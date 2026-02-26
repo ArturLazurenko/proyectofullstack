@@ -40,8 +40,8 @@ public class user {
 
     public void showInfo() {
         System.out.println("------ Informacion del Usuario --------");
-        System.out.println("Nombre            : " + name);
-        System.out.println("Prestamos activos : " + activeLoans + " / " + MAX_LOANS);
+        System.out.println("Nombre: " + name);
+        System.out.println("Prestamos activos: " + activeLoans + " / " + MAX_LOANS);
         System.out.println("---------------------------------------");
     }
 

@@ -17,11 +17,11 @@ public class book {
 
     public void showInfo() {
         System.out.println("------------------------");
-        System.out.println("ID     : " + id);
-        System.out.println("Titulo : " + title);
-        System.out.println("Autor  : " + author);
-        System.out.println("Genero : " + genre);
-        System.out.println("Estado : " + (available ? "Disponible" : "Prestado"));
+        System.out.println("ID: " + id);
+        System.out.println("Titulo: " + title);
+        System.out.println("Autor: " + author);
+        System.out.println("Genero: " + genre);
+        System.out.println("Estado: " + (available ? "Disponible" : "Prestado"));
         System.out.println("------------------------");
     }
 

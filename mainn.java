@@ -20,7 +20,8 @@ public class mainn {
             System.out.println("2. Pedir prestado un libro");
             System.out.println("3. Devolver un libro");
             System.out.println("4. Informacion del usuario");
-            System.out.println("5. Salir");
+            System.out.println("5. Mostrar los prestamos");
+            System.out.println("6. Salir");
             System.out.print("Elige una opcion: ");
 
             option = leerEntero(scanner);
@@ -59,14 +60,17 @@ public class mainn {
                     break;
 
                 case 5:
-                    System.out.println("Saliendo del sistema, adios...");
+                    library.showBorrowedBooks();
+                    break;
+                case 6:
+                    System.out.println("Saliendo del programa. adios...");
                     break;
 
                 default:
-                    System.out.println("Opcion invalida. Elige entre 1 y 5.");
+                    System.out.println("Opcion invalida. Elige entre 1 y 6.");
             }
 
-        } while (option != 5);
+        } while (option != 6);
 
         scanner.close();
     }

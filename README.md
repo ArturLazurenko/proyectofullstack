@@ -1,3 +1,9 @@
+# V3.0.1
+
+## Descripción
+se cambia un poco los mensajes de salida y se agraga la opcion de ver los libros prestados por el usuario
+---
+
 # V3.0
 
 ## Descripción
